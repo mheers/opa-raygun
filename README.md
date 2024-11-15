@@ -58,6 +58,14 @@ If you want to build the raygun executable:
 go build
 ```
 
+Or you can use the ci/ scripts to build and push the image to a registry
+```bash
+cd ci/
+
+export $(cat .env | xargs)
+dagger call build-and-push-image --src ../ --registry-token=env:REGISTRY_ACCESS_TOKEN
+```
+
 ### Usage
 
 ```
