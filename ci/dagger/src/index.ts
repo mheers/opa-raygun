@@ -17,7 +17,7 @@ import { dag, Directory, object, func, Secret } from "@dagger.io/dagger"
 
 const username = "mheers"
 
-const buildImage = "golang:1.24-alpine"
+const buildImage = "golang:1.23.6-alpine"
 const baseImage = "alpine"
 const targetImage = "docker.io/mheers/opa-raygun:v0.1.5"
 
