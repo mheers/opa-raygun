@@ -17,10 +17,10 @@ import (
  *  The configuration we need to start OPA
  */
 type OpaConfig struct {
-	OpaPort    uint16
-	OpaPath    string
-	BundlePath string
-	LogPath    string
+	OpaPort    uint16 `yaml:"-"`
+	OpaPath    string `yaml:"path"`
+	BundlePath string `yaml:"bundle-path"`
+	LogPath    string `yaml:"-"`
 }
 
 func (oc OpaConfig) String() string {

@@ -15,9 +15,9 @@ import (
 
 type TestSuite struct {
 	Opa         opa.OpaConfig
-	Name        string
+	Name        string `yaml:"suite"`
 	Description string
-	Directory   string
+	Directory   string `yaml:"-"`
 	Tests       []TestRecord
 }
 
@@ -27,12 +27,12 @@ func (suite TestSuite) String() string {
 }
 
 type TestRecord struct {
-	Suite        TestSuite
+	Suite        TestSuite `yaml:"-"`
 	Name         string
 	Description  string
 	Expects      []TestExpectation
 	Input        TestInput
-	DecisionPath string // the path part of the URL to use to call opa
+	DecisionPath string `yaml:"decision-path"`
 }
 
 func (tr TestRecord) String() string {
@@ -73,7 +73,7 @@ func (tr TestResult) String() string {
 }
 
 type TestExpectation struct {
-	ExpectationType string // exact, substring, jsonpath
+	ExpectationType string `yaml:"type"` // exact, substring, jsonpath
 	Target          string
 }
 
@@ -84,7 +84,7 @@ func (te TestExpectation) String() string {
 }
 
 type TestInput struct {
-	InputType string // inline, filepath
+	InputType string `yaml:"type"` // filepath, inline
 	Value     string
 }
 
